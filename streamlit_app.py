@@ -92,7 +92,6 @@ def main():
     st.markdown('<br>__Filters__', unsafe_allow_html=True)
     col1, col2, col3 = st.columns(3, gap='medium')
     st.markdown('<br>', unsafe_allow_html=True)    
-
     with col1:
         min_score, max_score = st.slider(
             'Select a range for the sentiment score:',
@@ -122,7 +121,7 @@ def main():
     if date_range and len(date_range) == 2:
         start_date, end_date = date_range
         data = data[(data['parsed_date'] >= pd.to_datetime(start_date)) & (data['parsed_date'] <= pd.to_datetime(end_date))]
-        keywords_filtered = keywords_filtered[(keywords_filtered['parsed_date'] >= pd.to_datetime(start_date)) & (keywords_filtered['parsed_date'] <= pd.to_datetime(end_date))]
+        keywords_filtered = keywords[(keywords['parsed_date'] >= pd.to_datetime(start_date)) & (keywords['parsed_date'] <= pd.to_datetime(end_date))]
     else:
         st.info('Please select both start and end dates.')
         
