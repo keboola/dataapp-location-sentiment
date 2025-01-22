@@ -102,7 +102,7 @@ def main():
     with col2:
         source_choices = data['reviewSource'].unique().tolist()
         sources = st.multiselect('Filter by review source:', source_choices, placeholder='All')
-        if len(sources) > 1:
+        if len(sources) > 0:
             selected_source = sources
         else:
             selected_source = source_choices
@@ -124,6 +124,7 @@ def main():
         keywords_filtered = keywords[(keywords['parsed_date'] >= pd.to_datetime(start_date)) & (keywords['parsed_date'] <= pd.to_datetime(end_date))]
     else:
         st.info('Please select both start and end dates.')
+        st.stop()
         
     # Apply Filters
     filtered_data = data[(data['sentiment'] >= min_score) & (data['sentiment'] <= max_score) & (data['reviewSource'].isin(selected_source))]
@@ -158,7 +159,7 @@ def main():
         review_source_counts .columns = ['reviewSource', 'count']
         top_10_industries = review_source_counts.head(10)
         count = top_10_industries.shape[0]
-        colors = ['#D4D4D4', '#939393']
+        colors = ['#63C5DA', '#0492C2', '#1F456E']
         
         fig = px.pie(
             top_10_industries, 
