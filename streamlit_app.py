@@ -101,7 +101,7 @@ def main():
 
     with col2:
         source_choices = data['reviewSource'].unique().tolist()
-        sources = st.selectbox('Filter by review source:', source_choices, placeholder='All')
+        sources = st.multiselect('Filter by review source:', source_choices, placeholder='All')
         if len(sources) > 1:
             selected_source = sources
         else:
