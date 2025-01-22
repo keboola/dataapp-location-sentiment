@@ -1,0 +1,5 @@
+streamlit
+wordcloud
+plotly
+keboola-streamlit
+openai
